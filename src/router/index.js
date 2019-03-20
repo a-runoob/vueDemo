@@ -4,6 +4,12 @@ import home from '../components/tabbar/homeBar.vue'
 import buycar from '../components/tabbar/buycarBar.vue'
 import search from '../components/tabbar/searchBar.vue'
 import vip from '../components/tabbar/vipBar.vue'
+import newslist from '../components/news/newslist.vue'
+import newsinfo from '../components/news/newsinfo.vue'
+import photolist from '../components/photos/photolist.vue'
+import photoinfo from '../components/photos/photoinfo.vue'
+import goodslist from '../components/goods/goodslist.vue'
+import goodsinfo from '../components/goods/goodsinfo.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -12,7 +18,7 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: home
+      component: home,
     },
     {
       path: '/vip',
@@ -29,6 +35,31 @@ export default new Router({
       name: 'buycar',
       component: buycar
     },
+    {
+      path:"/home/newslist",
+      component:newslist
+    },
+    {
+      path:'/home/newslist/newsinfo/:id',
+      component:newsinfo
+    },
+    {
+      path:'/home/photolist',
+      component:photolist
+    },
+    {
+      path:'/home/photolist/photoinfo/:id',
+      component:photoinfo
+    },
+    {
+      path:'/home/goodslist',
+      component:goodslist
+    },
+    {
+      path:'/home/goodslist/goodsinfo/:id',
+      component:goodsinfo,
+      name:goodsinfo,
+    }
   ],
   linkActiveClass:'mui-active'
 })
