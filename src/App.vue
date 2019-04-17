@@ -1,8 +1,12 @@
 <template>
   <div class="container">
-    <mt-header fixed title="Vue项目"></mt-header>
+    <mt-header fixed title="Vue项目">
+        <span  slot="left">
+          <mt-button icon="back" @click="back" v-show="flag">返回</mt-button>
+        </span>
+    </mt-header>
     <!-- 返回按钮 -->
-    <div class="back glyphicon glyphicon-chevron-left" @click="back">返回</div>
+ 
     <transition >
         <router-view></router-view>
     </transition>
@@ -18,7 +22,7 @@
 				<span class="mui-tab-label">会员</span>
 			</router-link>
 			<router-link class="mui-tab-item1" to="/buycar">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">9</span></span>
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="badge">{{$store.getters.getAllCount}}</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item1" to="/search">
@@ -44,10 +48,32 @@ import $ from 'jquery'
 
 export default {
   name: 'App',
+  data(){
+    return {
+      flag:false
+    }
+  },
+  created(){
+    if(this.$route.path=='/home'){
+      this.flag=false;
+    }else{
+      this.flag=true;    
+    }
+  },
   methods:{
     back(){
       // 返回上一页
-      this.$router.go(-1);
+        this.$router.go(-1);
+    }
+  },
+  watch:{
+    //监听路由改变
+    '$route.path' : function (newVal){
+      if(newVal=='/home'){
+        this.flag=false;
+      }else{
+        this.flag=true;
+      }
     }
   }
 }
@@ -59,13 +85,13 @@ export default {
     padding-top:.5rem;
     padding-bottom: .5rem;    
     overflow-x: hidden;  
-    .back{
-      position: absolute;
-      top:.1rem;
-      left:.1rem;
-      z-index: 999;
-      color:#fff;
-    }
+    // .back{
+    //   position: fixed;
+    //   top:.1rem;
+    //   left:.1rem;
+    //   z-index: 999;
+    //   color:#fff;
+    // }
   }
 
   .v-enter{

@@ -18,6 +18,7 @@
     </div>
 </template>
 <script>
+
 export default {
     data(){
         return{
@@ -30,8 +31,29 @@ export default {
     },
     methods:{
         getgoods(){
-            this.$http.get('api/getgoods?pageindex='+ this.pageIndex).then(result=>{
-                this.goodslist=this.goodslist.concat(result.body.message);
+            // this.$http.get('api/getgoods?pageindex='+ this.pageIndex).then(result=>{
+            //     this.goodslist=this.goodslist.concat(result.body.message);
+            // })
+            // this.$axios({
+            //     method:'get',
+            //     url:'http://www.liulongbin.top:3005/api/getgoods?pageindex='+ this.pageIndex
+            // })
+            // .then(result=>{
+            //     console.log(result)
+            //     this.goodslist=[...this.goodslist,...result.data.message];
+            // }).catch(error=>{
+            //     console.log(error)
+            // })
+
+
+            this.$axios.get('http://www.liulongbin.top:3005/api/getgoods?pageindex='+ this.pageIndex,{
+                param:{}
+            })
+            .then(result=>{
+                console.log(result)
+                this.goodslist=[...this.goodslist,...result.data.message];
+            }).catch(error=>{
+                console.log(error)
             })
         },
         getmore(){
@@ -73,8 +95,8 @@ export default {
             width: 100%;
         }
         .title{
-            font-size: .17rem;
-            font-weight: bold;
+            font-size: .14rem;
+            font-weight: 700;
             color: #000;
         }
         .goods-footer{

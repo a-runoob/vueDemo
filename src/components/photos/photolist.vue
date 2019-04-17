@@ -10,7 +10,7 @@
               </div>
             </div>
         </div>
-        <!-- 使用 mint-ui 的懒加载 -->
+    <!-- 使用 mint-ui 的懒加载 -->
     <ul class="img-ul">
         <router-link v-for="item in photolist" :key="item.id" tag="li" :to="'/home/photolist/photoinfo/' + item.id ">
             <img v-lazy="item.img_url">
@@ -24,7 +24,7 @@
     </div>
 </template>
 <script>
-// 'use strict'
+// 'use strict'    
 import mui from '../../lib/mui/js/mui.min.js'   //受 严格模式影响  
 // document.addEventListener('touchmove', function (event) {
 //     event.preventDefault();
@@ -85,6 +85,9 @@ export default {
         text-align: center;
         margin-bottom: .1rem;
         box-shadow: 0 0 0.06rem #999;
+
+
+        
         img[lazy=loading] {
         width: 40px;
         height: 300px;

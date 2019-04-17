@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 引入 轮播 组件   lunbo -->
-        <lunbo :lunboList="lunboList"></lunbo>
+        <lunbo :lunboList="lunboList" :ifFull="true"></lunbo>
 
         <!-- 九宫格 -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
